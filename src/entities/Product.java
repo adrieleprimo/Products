@@ -1,5 +1,7 @@
 package entities;
 
+import model.entities.ProductException;
+
 public class Product {
 	private String name;
 	private Double price;
@@ -34,7 +36,16 @@ public class Product {
 	public Double total() {
 		return price*quantity;
 	}
-
+	
+	private void errors(){
+		if(price == null) {
+			throw new ProductException ("Error: You can't stay price null");
+		}
+		if(quantity == null) {
+			throw new ProductException("Error: You can't leave quantity null");
+		}
+		
+	}
 
 	@Override
 	public String toString() {
